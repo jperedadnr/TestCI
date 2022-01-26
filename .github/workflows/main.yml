@@ -1,0 +1,13 @@
+on: [push]
+
+jobs:
+  build:
+    runs-on: macos-latest
+    name: A job to test an action
+    steps:
+      - name: Setup GraalVM action step
+        uses: jperedadnr/setup-graalvm@release22
+        with:
+          graalvm: '22.0.0.2-Final'
+          jdk: 'java17'
+
