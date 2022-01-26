@@ -5,6 +5,10 @@ jobs:
     runs-on: macos-latest
     name: A job to test an action
     steps:
+      - name: Setup GraalVM action step0
+        uses: jperedadnr/setup-graalvm@release22
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Setup GraalVM action step1
         uses: jperedadnr/setup-graalvm@release22
         with:
