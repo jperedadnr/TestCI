@@ -5,10 +5,24 @@ jobs:
     runs-on: macos-latest
     name: A job to test an action
     steps:
-      - name: Setup GraalVM action step
+      - name: Setup GraalVM action step1
         uses: jperedadnr/setup-graalvm@release22
         with:
           graalvm: '22.0.0.2-Final'
           jdk: 'java17'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Setup GraalVM action step2
+        uses: jperedadnr/setup-graalvm@release22
+        with:
+          graalvm: '22.0.0-dev-20220126_1053'
+          jdk: 'java17'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Setup GraalVM action step3
+        uses: jperedadnr/setup-graalvm@release22
+        with:
+          graalvm: '21.2.0-dev-20210621_1207'
+          jdk: ''
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
