@@ -5,20 +5,17 @@ jobs:
     runs-on: windows-2019
     name: A job to test an action on Windows
     steps:
-      - name: create file
-        uses: "finnp/create-file-action@master"
-        env:
-          FILE_NAME: "fileName.txt"
-          FILE_DATA: "file content"
-          
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
       - name: edit file
-        run: echo '' >> fileName.txt && echo VENDOR=Gluon >> fileName.txt
+        run: echo '' >> README.md && echo VENDOR=Gluon >> README.md
         
       - name: Archive distribution
         uses: actions/upload-artifact@v2
         with:
-          name: fileName.txt
-          path: fileName.txt
+          name: README.md
+          path: README.md
 
   build:
     runs-on: macos-latest
