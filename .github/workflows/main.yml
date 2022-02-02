@@ -1,8 +1,28 @@
 on: [push]
 
 jobs:
+  build-win:
+    runs-on: windows-2019
+    name: A job to test an action on Windows
+    steps:
+      - name: create file
+        uses: "finnp/create-file-action@master"
+        env:
+          FILE_NAME: "fileName.txt"
+          FILE_DATA: "file content"
+          
+      - name: edit file
+        run: echo '' >> fileName.txt && echo VENDOR=Gluon >> fileName.txt
+        
+      - name: Archive distribution
+        uses: actions/upload-artifact@v2
+        with:
+          name: fileName.txt
+          path: fileName.txt
+
   build:
     runs-on: macos-latest
+    if: ${{ false }}  # disable for now
     name: A job to test an action
     steps:
       - name: Setup GraalVM action step0
