@@ -11,7 +11,7 @@ jobs:
         run: |
           export ANDROID_SDK=$ANDROID_HOME
           ls -l $ANDROID_SDK
-          export ANDROID_NDK=$ANDROID_HOME/ndk
+          export ANDROID_NDK=$ANDROID_HOME/ndk/21.4.7075529
           ls -l $ANDROID_NDK
           export TOOLCHAIN=$ANDROID_NDK/toolchains/llvm/prebuilt/darwin-x86_64
           ls -l $TOOLCHAIN
