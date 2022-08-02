@@ -10,7 +10,9 @@ jobs:
       - name: Test clang
         run: |
           export ANDROID_SDK=$ANDROID_HOME
+          ls -l $ANDROID_SDK
           export ANDROID_NDK=$ANDROID_HOME/ndk-bundle
+          ls -l $ANDROID_NDK
           export TOOLCHAIN=$ANDROID_NDK/toolchains/llvm/prebuilt/darwin-x86_64
           ls -l $TOOLCHAIN
           export CLANG=$TOOLCHAIN/bin/clang
