@@ -1,8 +1,22 @@
 on: [push]
 
 jobs:
+  build:
+    name: Build
+    runs-on: macos-11
+    strategy:
+      fail-fast: false
+    steps:
+      - name: Test clang
+        run: |
+          export ANDROID_SDK=$ANDROID_HOME
+          export ANDROID_NDK=$ANDROID_HOME/ndk-bundle
+          export CLANG=$ANDROID_NDK/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang
+          $CLANG --version
+
   build-win:
     runs-on: windows-2019
+    if: ${{ false }}  # disable for now
     name: A job to test an action on Windows
     steps:
       - uses: actions/checkout@v2
@@ -17,7 +31,7 @@ jobs:
           name: README.md
           path: README.md
 
-  build:
+  build-mac:
     runs-on: macos-latest
     if: ${{ false }}  # disable for now
     name: A job to test an action
