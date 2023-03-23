@@ -15,9 +15,17 @@ jobs:
         with:
           gluon-license: ${{ secrets.GLUON_LICENSE }}
           
-      - name: Check content1
-        run: cat ./src/main/resources/gluonmobile.license
-          
+      - name: Make staging directory
+        run: mkdir staging
+
+      - name: Copy packages to staging
+        run: cp -r src/main/resources/gluonmobile.* staging
+
+      - name: Upload
+        uses: actions/upload-artifact@v2
+        with:
+          name: Package
+          path: staging          
 
   build-win:
     runs-on: windows-2019
