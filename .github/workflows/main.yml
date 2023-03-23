@@ -16,7 +16,7 @@ jobs:
           gluon-license: ${{ secrets.GLUON_LICENSE }}
           
       - name: Check content1
-        run: cat ./src/main/resources/mobile.license
+        run: cat ./src/main/resources/gluonmobile.license
           
 
   build-win:
