@@ -7,16 +7,16 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
-      - name: Check content
-        run: ls -l
+      - name: Check content0
+        run: ls -l ./src/main/resources
         
       - name: Gluon License
         uses: gluonhq/gluon-build-license@v2
         with:
           gluon-license: ${{ secrets.GLUON_LICENSE }}
           
-      - name: Check content
-        run: ls -l
+      - name: Check content1
+        run: ls -l ./src/main/resources
           
 
   build-win:
