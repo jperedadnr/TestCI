@@ -5,13 +5,13 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       
       - name: Check content0
         run: ls -l ./src/main/resources
         
       - name: Gluon License
-        uses: gluonhq/gluon-build-license@v2
+        uses: gluonhq/gluon-build-license@v1
         with:
           gluon-license: ${{ secrets.GLUON_LICENSE }}
           
