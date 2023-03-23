@@ -7,6 +7,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
+      - name: Check content
+        run: ls -l
+        
       - name: Gluon License
         uses: gluonhq/gluon-build-license@v2
         with:
