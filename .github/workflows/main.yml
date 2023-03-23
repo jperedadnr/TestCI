@@ -12,7 +12,7 @@ jobs:
         with:
           gluon-license: ${{ secrets.GLUON_LICENSE }}
           
-      - name: Check
+      - name: Check content
         run: ls -l
           
 
