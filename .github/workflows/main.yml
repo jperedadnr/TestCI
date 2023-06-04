@@ -7,6 +7,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Setup java
+        uses: oracle-actions/setup-java@v1
+        with:
+          website: jdk.java.net
+          release: 19
+
       - name: test
         run: mvn -Djavafx.monocle=true test
       
