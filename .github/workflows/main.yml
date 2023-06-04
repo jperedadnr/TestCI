@@ -6,7 +6,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
+      - name: test
+        run: mvn -Djavafx.monocle=true test
       
+  build-linux:
+    name: Build
+    runs-on: ubuntu-latest
+    if: ${{ false }}  # disable for now
+    steps:
+      - uses: actions/checkout@v2
+
       - name: Check content0
         run: ls -l ./src/main/resources
         
