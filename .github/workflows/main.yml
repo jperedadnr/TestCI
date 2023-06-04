@@ -17,6 +17,7 @@ jobs:
           release: 19
 
       - name: test
+        shell: bash
         run: |
           if [ "$RUNNER_OS" == "Linux" ]; then
             export DISPLAY=:90
@@ -25,7 +26,7 @@ jobs:
           mvn test
         env:
           JAVA_TOOL_OPTIONS: "-Djavafx.monocle=false"
-      
+
   build-linux:
     name: Build
     runs-on: ubuntu-latest
