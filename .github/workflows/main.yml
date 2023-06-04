@@ -24,8 +24,6 @@ jobs:
             Xvfb -ac :90 -screen 0 1280x1024x24 > /dev/null 2>&1 &
           fi
           mvn test
-        env:
-          JAVA_TOOL_OPTIONS: "-Djavafx.monocle=false"
 
   build-linux:
     name: Build
