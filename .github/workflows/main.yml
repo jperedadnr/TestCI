@@ -2,8 +2,8 @@ on: [push]
 
 jobs:
   build:
-    name: Build
-    runs-on: ubuntu-latest
+    name: Test
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
 
