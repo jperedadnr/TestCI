@@ -19,7 +19,7 @@ jobs:
       - name: test
         run: mvn test
         env:
-          - _JAVA_OPTIONS="-Djavafx.monocle=true"
+          - JAVA_TOOL_OPTIONS="-Djavafx.monocle=true"
       
   build-linux:
     name: Build
