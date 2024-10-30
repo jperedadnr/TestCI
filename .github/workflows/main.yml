@@ -1,8 +1,46 @@
-on: [push]
+# on: [push]
+on:
+  workflow_dispatch:
+    inputs:
+      candidate:
+        type: choice
+        description: Choose a candidate
+        options:
+          - RC
+          - GA
+      rc_version:
+        type: string
+        default: ''
+        description: 'If candidate is RC, set a version like RC1 or RC2, else leave it empty'
+
 
 jobs:
+  precheck:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Set environment
+        shell: bash
+        run: |
+          PROJECT_VERSION='24.0.0'
+          APP_VERSION=$PROJECT_VERSION
+          S3_PATH=$PROJECT_VERSION
+          CANDIDATE=${{ github.event.inputs.candidate }}
+          if [[ "$CANDIDATE" == RC ]]; then
+              RC_VERSION = ${{ github.event.inputs.rc_version }}
+              if [[ "$RC_VERSION" == "" ]]; then
+                RC_VERSION = "RC"
+              fi
+              PROJECT_VERSION=${PROJECT_VERSION}-${RC_VERSION}
+              S3_PATH=RC/$PROJECT_VERSION
+          fi
+          echo "Releasing.. "$PROJECT_VERSION
+          echo APP_VERSION=$APP_VERSION >> $GITHUB_OUTPUT
+          echo PROJECT_VERSION=$PROJECT_VERSION >> $GITHUB_OUTPUT
+          echo S3_PATH=$S3_PATH >> $GITHUB_OUTPUT
+
   build:
     name: Test
+    if: ${{ false }}  # disable for now
     strategy:
       matrix:
         os: [ macos-latest, ubuntu-latest, windows-latest ]
